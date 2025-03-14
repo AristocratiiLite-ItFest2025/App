@@ -1,0 +1,40 @@
+services:
+  flask-app:
+    build: Server
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/aristocratii
+    volumes:
+      - ./Server:/app
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: aristocratii
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  client:
+    build: Client
+    container_name: client
+    ports:
+      - "8080:80"
+    depends_on:
+      - flask-app
+    volumes:
+      - ./Client:/app
+    restart: unless-stopped
+
+volumes:
+  pgdata:
