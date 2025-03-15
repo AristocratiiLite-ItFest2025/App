@@ -1,6 +1,7 @@
 services:
   flask-app:
     image: ghcr.io/aristocratiilite-itfest2025/aristocratii-server:latest
+    # build: ./Server/
     container_name: flask-app
     ports:
       - "5000:5000"
