@@ -1,6 +1,6 @@
 services:
   flask-app:
-    build: Server
+    image: ghcr.io/aristocratiilite-itfest2025/aristocratii-server:latest
     container_name: flask-app
     ports:
       - "5000:5000"
@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
 
   client:
-    build: Client
+    image: ghcr.io/aristocratiilite-itfest2025/aristocratii-client:latest
     container_name: client
     ports:
       - "8080:80"
