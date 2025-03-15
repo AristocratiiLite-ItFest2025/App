@@ -60,7 +60,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/aristocratiilite-itfest2025/aristocratii-server:latest
-            ghcr.io/aristocratiilite-itfest2025/aristocratii-serverr:${{ github.sha }}
+            ghcr.io/aristocratiilite-itfest2025/aristocratii-server:${{ github.sha }}
 
       - name: Build and push Client image
         uses: docker/build-push-action@v4
